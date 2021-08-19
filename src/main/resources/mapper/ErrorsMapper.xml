@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.english.easyenglish.dao.ErrorsMapper">
+  <resultMap id="BaseResultMap" type="com.english.easyenglish.pojo.Errors">
+    <!--@mbg.generated-->
+    <id column="errorsid" jdbcType="BIGINT" property="errorsid" />
+    <result column="word_id" jdbcType="BIGINT" property="wordId" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="createuser" jdbcType="VARCHAR" property="createuser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    errorsid, word_id, createtime, `createuser`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from errors
+    where errorsid = #{errorsid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from errors
+    where errorsid = #{errorsid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="errorsid" keyProperty="errorsid" parameterType="com.english.easyenglish.pojo.Errors" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into errors (word_id, createtime, `createuser`
+      )
+    values (#{wordId,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP}, #{createuser,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="errorsid" keyProperty="errorsid" parameterType="com.english.easyenglish.pojo.Errors" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into errors
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wordId != null">
+        word_id,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="createuser != null">
+        `createuser`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wordId != null">
+        #{wordId,jdbcType=BIGINT},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.english.easyenglish.pojo.Errors">
+    <!--@mbg.generated-->
+    update errors
+    <set>
+      <if test="wordId != null">
+        word_id = #{wordId,jdbcType=BIGINT},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null">
+        `createuser` = #{createuser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where errorsid = #{errorsid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.english.easyenglish.pojo.Errors">
+    <!--@mbg.generated-->
+    update errors
+    set word_id = #{wordId,jdbcType=BIGINT},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      `createuser` = #{createuser,jdbcType=VARCHAR}
+    where errorsid = #{errorsid,jdbcType=BIGINT}
+  </update>
+</mapper>

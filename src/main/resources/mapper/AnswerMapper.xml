@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.english.easyenglish.dao.AnswerMapper">
+  <resultMap id="BaseResultMap" type="com.english.easyenglish.pojo.Answer">
+    <!--@mbg.generated-->
+    <id column="answerid" jdbcType="BIGINT" property="answerid" />
+    <result column="examinationitemidfk" jdbcType="BIGINT" property="examinationitemidfk" />
+    <result column="answer" jdbcType="VARCHAR" property="answer" />
+    <result column="correct" jdbcType="VARCHAR" property="correct" />
+    <result column="respondents" jdbcType="VARCHAR" property="respondents" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    answerid, examinationitemidfk, answer, correct, respondents, createtime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from answer
+    where answerid = #{answerid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from answer
+    where answerid = #{answerid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="answerid" keyProperty="answerid" parameterType="com.english.easyenglish.pojo.Answer" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into answer (examinationitemidfk, answer, correct, 
+      respondents, createtime)
+    values (#{examinationitemidfk,jdbcType=BIGINT}, #{answer,jdbcType=VARCHAR}, #{correct,jdbcType=VARCHAR}, 
+      #{respondents,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="answerid" keyProperty="answerid" parameterType="com.english.easyenglish.pojo.Answer" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into answer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="examinationitemidfk != null">
+        examinationitemidfk,
+      </if>
+      <if test="answer != null">
+        answer,
+      </if>
+      <if test="correct != null">
+        correct,
+      </if>
+      <if test="respondents != null">
+        respondents,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="examinationitemidfk != null">
+        #{examinationitemidfk,jdbcType=BIGINT},
+      </if>
+      <if test="answer != null">
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="correct != null">
+        #{correct,jdbcType=VARCHAR},
+      </if>
+      <if test="respondents != null">
+        #{respondents,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.english.easyenglish.pojo.Answer">
+    <!--@mbg.generated-->
+    update answer
+    <set>
+      <if test="examinationitemidfk != null">
+        examinationitemidfk = #{examinationitemidfk,jdbcType=BIGINT},
+      </if>
+      <if test="answer != null">
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="correct != null">
+        correct = #{correct,jdbcType=VARCHAR},
+      </if>
+      <if test="respondents != null">
+        respondents = #{respondents,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where answerid = #{answerid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.english.easyenglish.pojo.Answer">
+    <!--@mbg.generated-->
+    update answer
+    set examinationitemidfk = #{examinationitemidfk,jdbcType=BIGINT},
+      answer = #{answer,jdbcType=VARCHAR},
+      correct = #{correct,jdbcType=VARCHAR},
+      respondents = #{respondents,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP}
+    where answerid = #{answerid,jdbcType=BIGINT}
+  </update>
+</mapper>

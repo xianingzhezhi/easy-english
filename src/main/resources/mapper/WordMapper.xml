@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.english.easyenglish.dao.WordMapper">
+  <resultMap id="BaseResultMap" type="com.english.easyenglish.pojo.Word">
+    <!--@mbg.generated-->
+    <id column="wordid" jdbcType="BIGINT" property="wordid" />
+    <result column="us" jdbcType="VARCHAR" property="us" />
+    <result column="cn" jdbcType="VARCHAR" property="cn" />
+    <result column="categoryidfk" jdbcType="BIGINT" property="categoryidfk" />
+    <result column="pid" jdbcType="BIGINT" property="pid" />
+    <result column="phonetic" jdbcType="VARCHAR" property="phonetic" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="createuser" jdbcType="VARCHAR" property="createuser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    wordid, us, cn, categoryidfk, pid, phonetic, createtime, `createuser`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from word
+    where wordid = #{wordid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from word
+    where wordid = #{wordid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="wordid" keyProperty="wordid" parameterType="com.english.easyenglish.pojo.Word" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into word (us, cn, categoryidfk, 
+      pid, phonetic, createtime, 
+      `createuser`)
+    values (#{us,jdbcType=VARCHAR}, #{cn,jdbcType=VARCHAR}, #{categoryidfk,jdbcType=BIGINT}, 
+      #{pid,jdbcType=BIGINT}, #{phonetic,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{createuser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="wordid" keyProperty="wordid" parameterType="com.english.easyenglish.pojo.Word" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into word
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="us != null">
+        us,
+      </if>
+      <if test="cn != null">
+        cn,
+      </if>
+      <if test="categoryidfk != null">
+        categoryidfk,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="phonetic != null">
+        phonetic,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="createuser != null">
+        `createuser`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="us != null">
+        #{us,jdbcType=VARCHAR},
+      </if>
+      <if test="cn != null">
+        #{cn,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryidfk != null">
+        #{categoryidfk,jdbcType=BIGINT},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="phonetic != null">
+        #{phonetic,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.english.easyenglish.pojo.Word">
+    <!--@mbg.generated-->
+    update word
+    <set>
+      <if test="us != null">
+        us = #{us,jdbcType=VARCHAR},
+      </if>
+      <if test="cn != null">
+        cn = #{cn,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryidfk != null">
+        categoryidfk = #{categoryidfk,jdbcType=BIGINT},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="phonetic != null">
+        phonetic = #{phonetic,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null">
+        `createuser` = #{createuser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where wordid = #{wordid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.english.easyenglish.pojo.Word">
+    <!--@mbg.generated-->
+    update word
+    set us = #{us,jdbcType=VARCHAR},
+      cn = #{cn,jdbcType=VARCHAR},
+      categoryidfk = #{categoryidfk,jdbcType=BIGINT},
+      pid = #{pid,jdbcType=BIGINT},
+      phonetic = #{phonetic,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      `createuser` = #{createuser,jdbcType=VARCHAR}
+    where wordid = #{wordid,jdbcType=BIGINT}
+  </update>
+</mapper>

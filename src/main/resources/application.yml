@@ -1,0 +1,17 @@
+server:
+  port: 9001
+spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.57.94.217:3306/english?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+logging:
+  level:
+    com.english.easyenglish.dao: debug

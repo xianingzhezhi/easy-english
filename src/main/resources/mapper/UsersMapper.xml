@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.english.easyenglish.dao.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.english.easyenglish.pojo.Users">
+    <!--@mbg.generated-->
+    <id column="userid" jdbcType="BIGINT" property="userid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="categoryidfk" jdbcType="BIGINT" property="categoryidfk" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    userid, `name`, account, `password`, pic, categoryidfk
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where userid = #{userid,jdbcType=BIGINT}
+  </select>
+    <select id="getUserByAccountAndPassword" resultType="com.english.easyenglish.pojo.Users">
+      select * from users where account = #{account} and password = #{password}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from users
+    where userid = #{userid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="userid" keyProperty="userid" parameterType="com.english.easyenglish.pojo.Users" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into users (`name`, account, `password`, 
+      pic, categoryidfk)
+    values (#{name,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{pic,jdbcType=VARCHAR}, #{categoryidfk,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" keyColumn="userid" keyProperty="userid" parameterType="com.english.easyenglish.pojo.Users" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="pic != null">
+        pic,
+      </if>
+      <if test="categoryidfk != null">
+        categoryidfk,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryidfk != null">
+        #{categoryidfk,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.english.easyenglish.pojo.Users">
+    <!--@mbg.generated-->
+    update users
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryidfk != null">
+        categoryidfk = #{categoryidfk,jdbcType=BIGINT},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.english.easyenglish.pojo.Users">
+    <!--@mbg.generated-->
+    update users
+    set `name` = #{name,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      categoryidfk = #{categoryidfk,jdbcType=BIGINT}
+    where userid = #{userid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.english.easyenglish.dao.ExaminationitemMapper">
+  <resultMap id="BaseResultMap" type="com.english.easyenglish.pojo.Examinationitem">
+    <!--@mbg.generated-->
+    <id column="examinationitemid" jdbcType="BIGINT" property="examinationitemid" />
+    <result column="wordidfk" jdbcType="BIGINT" property="wordidfk" />
+    <result column="examinationidfk" jdbcType="BIGINT" property="examinationidfk" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    examinationitemid, wordidfk, examinationidfk
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from examinationitem
+    where examinationitemid = #{examinationitemid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from examinationitem
+    where examinationitemid = #{examinationitemid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="examinationitemid" keyProperty="examinationitemid" parameterType="com.english.easyenglish.pojo.Examinationitem" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into examinationitem (wordidfk, examinationidfk)
+    values (#{wordidfk,jdbcType=BIGINT}, #{examinationidfk,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" keyColumn="examinationitemid" keyProperty="examinationitemid" parameterType="com.english.easyenglish.pojo.Examinationitem" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into examinationitem
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wordidfk != null">
+        wordidfk,
+      </if>
+      <if test="examinationidfk != null">
+        examinationidfk,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wordidfk != null">
+        #{wordidfk,jdbcType=BIGINT},
+      </if>
+      <if test="examinationidfk != null">
+        #{examinationidfk,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.english.easyenglish.pojo.Examinationitem">
+    <!--@mbg.generated-->
+    update examinationitem
+    <set>
+      <if test="wordidfk != null">
+        wordidfk = #{wordidfk,jdbcType=BIGINT},
+      </if>
+      <if test="examinationidfk != null">
+        examinationidfk = #{examinationidfk,jdbcType=BIGINT},
+      </if>
+    </set>
+    where examinationitemid = #{examinationitemid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.english.easyenglish.pojo.Examinationitem">
+    <!--@mbg.generated-->
+    update examinationitem
+    set wordidfk = #{wordidfk,jdbcType=BIGINT},
+      examinationidfk = #{examinationidfk,jdbcType=BIGINT}
+    where examinationitemid = #{examinationitemid,jdbcType=BIGINT}
+  </update>
+</mapper>
